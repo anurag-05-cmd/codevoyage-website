@@ -1,65 +1,113 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { characters } from './data/characters';
+import CharacterCarousel from './components/CharacterCarousel';
+import styles from './Home.module.css';
 
 export default function Home() {
+  const [hoveredCharacterId, setHoveredCharacterId] = useState<string | null>(null);
+
+  const activeCharacter = characters.find(c => c.id === hoveredCharacterId) || characters[0];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className={styles.container}>
+      {/* Aggressive Background Shapes */}
+      <div className={styles.accentYellow} />
+      <div className={styles.diagonalBg} />
+      <div className={styles.accentCyan} />
+      <div className={styles.accentCyanSmall} />
+
+      <header className={styles.header}>
+        <div className={styles.logo}>CODEVOYAGE</div>
+        
+        <nav className={styles.navLinks}>
+          <span className={styles.navLink}>HERO</span>
+          <span className={styles.slash}>/</span>
+          <span className={styles.navLink}>NEWS</span>
+          <span className={styles.slash}>/</span>
+          <span className={styles.navLink}>CONTACT</span>
+          <span className={styles.slash}>/</span>
+          <span className={styles.navLink}>ABOUT US</span>
+          <span className={styles.slash}>/</span>
+          <span className={styles.navLink}>EVENT</span>
+          
+          <button className={styles.navButton}>SIGN UP</button>
+        </nav>
+      </header>
+
+      <div className={styles.mainContent}>
+        <div className={styles.leftContent}>
+          <motion.h1 
+            className={styles.title}
+            key={activeCharacter.name}
+            initial={{ opacity: 0, x: -50, skewX: 10 }}
+            animate={{ opacity: 1, x: 0, skewX: 0 }}
+            transition={{ duration: 0.4, type: 'spring' }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {activeCharacter.name}
+          </motion.h1>
+          
+          <motion.p 
+            className={styles.subtitle}
+            key={`desc-${activeCharacter.id}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Documentation
-          </a>
+            {activeCharacter.description} 
+            CodeVoyage is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </motion.p>
+
+          <button className={styles.ctaButton}>SIGN UP NOW</button>
         </div>
-      </main>
-    </div>
+
+        <div className={styles.rightContent}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCharacter.id}
+              className={styles.characterHero}
+              initial={{ opacity: 0, scale: 0.8, x: 100 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 1.1, x: -50 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              {/* Massive Hero Silhouette */}
+              <div style={{
+                width: '400px',
+                height: '700px',
+                background: `linear-gradient(135deg, ${activeCharacter.themeColor} 0%, ${activeCharacter.secondaryColor} 100%)`,
+                clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: `0 30px 60px ${activeCharacter.themeColor}66`
+              }}>
+                <div style={{
+                  fontSize: '7rem',
+                  fontWeight: 900,
+                  color: 'rgba(255,255,255,0.9)',
+                  textTransform: 'uppercase',
+                  transform: 'rotate(-90deg)',
+                  fontFamily: 'var(--font-heading)',
+                  whiteSpace: 'nowrap',
+                  letterSpacing: '5px'
+                }}>
+                  {activeCharacter.name}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className={styles.carouselContainer}>
+          <CharacterCarousel 
+            characters={characters} 
+            onHoverCharacter={setHoveredCharacterId}
+          />
+        </div>
+      </div>
+    </main>
   );
 }

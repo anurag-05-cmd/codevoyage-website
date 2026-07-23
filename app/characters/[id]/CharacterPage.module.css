@@ -1,0 +1,341 @@
+.pageContainer {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--background);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.heroSection {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.diagonalSection {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 1;
+}
+
+.accentYellow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 63%;
+  height: 100%;
+  background: var(--accent-yellow);
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, -3% 100%);
+  z-index: 0;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  padding: 3rem;
+  align-items: center;
+}
+
+.leftColumn {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.backgroundText {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  font-size: 15rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.03);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.breadcrumb {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-heading);
+}
+
+.title {
+  font-size: 8rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 500px;
+  margin-bottom: 3rem;
+  font-family: var(--font-sans);
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  color: var(--primary);
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.characterDisplay {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+.backButton {
+  position: absolute;
+  bottom: 3rem;
+  left: 45%;
+  background: black;
+  color: white;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skewX(-20deg);
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  transition: all 0.3s;
+}
+
+.backButton:hover {
+  background: var(--primary);
+}
+
+.backButtonIcon {
+  transform: skewX(20deg); /* un-skew the icon */
+}
+
+.nextButton {
+  position: absolute;
+  bottom: 3rem;
+  right: 15%;
+  background: white;
+  color: black;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skewX(-20deg);
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  transition: all 0.3s;
+}
+
+.nextButton:hover {
+  background: #f0f0f0;
+}
+
+.nextButtonIcon {
+  transform: skewX(20deg);
+}
+
+.paginationLines {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.line {
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.5);
+}
+
+.line.active {
+  background: white;
+  width: 30px;
+}
+
+/* --- Hackathon Sections --- */
+
+.section {
+  padding: 6rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  position: relative;
+  z-index: 5;
+  background: var(--background);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  padding: 2.5rem;
+  background: var(--card-bg);
+  transform: skewX(-10deg);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-right: 4px solid var(--theme-color);
+  box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: skewX(-10deg) scale(1.05) translateY(-10px);
+  filter: brightness(1.2);
+}
+
+.cardContent {
+  transform: skewX(10deg); /* unskew internal content */
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--theme-color);
+}
+
+.cardText {
+  color: #d1d5db;
+  line-height: 1.6;
+  font-family: var(--font-sans);
+}
+
+.darkSection {
+  background: #111827;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 1.2rem;
+  font-family: var(--font-sans);
+  color: white;
+  outline: none;
+  transform: skewX(-10deg);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.input:focus {
+  border-color: var(--theme-color);
+  background: rgba(255,255,255,0.1);
+}
+
+.input::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.submitButton {
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  color: black;
+  background: var(--theme-color);
+  border: none;
+  cursor: pointer;
+  transform: skewX(-10deg);
+  transition: transform 0.2s, filter 0.2s;
+  box-shadow: -5px 5px 0px rgba(0,0,0,0.5);
+  margin-top: 1rem;
+}
+
+.submitButton:hover {
+  transform: skewX(-10deg) scale(1.05) translateY(-2px);
+  filter: brightness(1.2);
+}
+
