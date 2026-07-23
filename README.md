@@ -1,14 +1,14 @@
-# ⚡ CodeVoyage — Avengers-Themed Esports Hackathon Platform
+# CodeVoyage — Avengers-Themed Esports Hackathon Platform
 
 **CodeVoyage** is a high-energy, multi-paged hackathon web application built with an aggressive "Marvel Rivals" esports aesthetic. Designed to engage participants with vibrant hero themes, dynamic slants, interactive carousel navigation, and smooth Framer Motion transitions.
 
 ---
 
-## 🔥 Features
+## Features
 
 - **Marvel Rivals Esports Aesthetic**: High-energy design using diagonal `clip-path` shapes, high contrast dark backgrounds (`#1a1b26`), lightning yellow (`#fde047`), and neon cyan accents.
 - **Interactive Character Carousel**: Sleek, slanted character cards with real-time hero stage updates on hover and click.
-- **Personalized Subpages**: Dynamic pages for each hero (Spider-Man, Iron Man, Captain America, Hulk, Black Panther, Black Widow) featuring custom color schemes across all hackathon sections.
+- **Personalized Subpages**: Dynamic pages for each hero (Spider-Man, Iron Man, Captain America, Thor, Hulk) featuring custom color schemes across all hackathon sections.
 - **Full Hackathon Landing Sections**:
   - **Mission Briefing**: Hackathon objectives and developer arsenal.
   - **Operation Timeline**: 3-day hackathon event schedule.
@@ -18,7 +18,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router & Turbopack)
 - **Runtime & Package Manager**: [Bun](https://bun.sh/)
@@ -28,7 +28,7 @@
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 

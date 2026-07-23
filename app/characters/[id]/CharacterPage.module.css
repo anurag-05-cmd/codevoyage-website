@@ -25,6 +25,7 @@
   right: 0;
   width: 60%;
   height: 100%;
+  background: var(--hero-gradient);
   clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
 }
@@ -35,7 +36,7 @@
   right: 0;
   width: 63%;
   height: 100%;
-  background: var(--accent-yellow);
+  background: var(--accent-color);
   clip-path: polygon(22% 0, 100% 0, 100% 100%, -3% 100%);
   z-index: 0;
 }

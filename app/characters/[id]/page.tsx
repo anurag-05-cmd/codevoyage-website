@@ -50,7 +50,12 @@ export default function CharacterPage({ params }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      style={{ '--theme-color': character.themeColor } as React.CSSProperties}
+      style={{
+        '--theme-color': character.themeColor,
+        '--secondary-color': character.secondaryColor,
+        '--accent-color': character.accentColor,
+        '--hero-gradient': character.gradient,
+      } as React.CSSProperties}
     >
       <div className={styles.heroSection}>
         {/* Background Text changed from MARVEL to the Character Name for a personalized feel */}
@@ -59,7 +64,7 @@ export default function CharacterPage({ params }: Props) {
         {/* Diagonal Colored Block with slight parallax */}
         <motion.div 
           className={styles.diagonalSection}
-          style={{ backgroundColor: character.themeColor, y: diagonalY }}
+          style={{ background: character.gradient, y: diagonalY }}
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -110,7 +115,7 @@ export default function CharacterPage({ params }: Props) {
                 style={{
                   width: '350px',
                   height: '650px',
-                  background: `linear-gradient(135deg, ${character.themeColor}88 0%, ${character.secondaryColor}44 100%)`,
+                  background: character.gradient,
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',

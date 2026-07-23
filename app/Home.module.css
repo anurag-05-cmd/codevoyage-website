@@ -92,46 +92,78 @@
 
 .title {
   font-family: var(--font-heading);
-  font-size: 7rem; /* Slightly smaller so it doesn't wrap awkwardly */
+  font-size: 7rem;
   font-weight: 700;
   font-style: italic;
   line-height: 0.85;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
-  text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
   white-space: pre-wrap;
+}
+
+.subtitleBox {
+  background: rgba(15, 17, 26, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 4px solid var(--accent-yellow);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+  max-width: 550px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .subtitle {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
-  opacity: 0.8;
-  max-width: 550px;
-  margin-bottom: 2rem; /* Reduce margin */
+  color: #e2e8f0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  background: rgba(253, 224, 71, 0.1);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(253, 224, 71, 0.3);
+  width: fit-content;
+  transform: skewX(-10deg);
 }
 
 .ctaButton {
-  background: #d1d5db;
+  background: var(--accent-yellow);
   color: black;
   padding: 1rem 3rem;
   font-size: 2rem;
   font-family: var(--font-heading);
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
   width: fit-content;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 4px 4px 0px black;
-  margin-bottom: 2rem; /* Add margin so it doesn't overlap carousel */
+  transform: skewX(-12deg);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: -5px 5px 0px black;
+  margin-bottom: 2rem;
 }
 
 .ctaButton:hover {
   background: white;
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0px black;
+  transform: skewX(-12deg) scale(1.05) translateY(-3px);
+  box-shadow: -8px 8px 0px black, 0 0 25px rgba(255,255,255,0.6);
 }
 
 .rightContent {
