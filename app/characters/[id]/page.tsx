@@ -111,31 +111,54 @@ export default function CharacterPage({ params }: Props) {
               animate={{ scale: 1, opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring", delay: 0.2 }}
             >
-              <div 
-                style={{
-                  width: '350px',
-                  height: '650px',
-                  background: character.gradient,
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  color: 'white',
-                  fontWeight: '900',
-                  fontSize: '5rem',
-                  letterSpacing: '5px',
-                  transform: 'rotate(-90deg)',
-                  boxShadow: `0 30px 60px ${character.themeColor}66`,
-                  transition: 'all 0.5s ease',
-                  fontFamily: 'var(--font-heading)',
-                  textTransform: 'uppercase',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {character.name}
-              </div>
+              {character.image ? (
+                <div
+                  style={{
+                    width: '350px',
+                    height: '650px',
+                    clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
+                    boxShadow: `0 30px 60px ${character.themeColor}66`,
+                    overflow: 'hidden',
+                    position: 'relative',
+                  }}
+                >
+                  <img
+                    src={character.image}
+                    alt={character.imageAlt}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+              ) : (
+                <div 
+                  style={{
+                    width: '350px',
+                    height: '650px',
+                    background: character.gradient,
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontWeight: '900',
+                    fontSize: '5rem',
+                    letterSpacing: '5px',
+                    transform: 'rotate(-90deg)',
+                    boxShadow: `0 30px 60px ${character.themeColor}66`,
+                    transition: 'all 0.5s ease',
+                    fontFamily: 'var(--font-heading)',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {character.name}
+                </div>
+              )}
             </motion.div>
           </div>
         </div>

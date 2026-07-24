@@ -38,13 +38,21 @@ export default function CharacterCarousel({ characters, onHoverCharacter }: Prop
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className={styles.characterImageContainer}>
-              {/* Fallback silhouette if no image is available yet */}
-              <div 
-                className={styles.silhouette}
-                style={{ backgroundColor: char.themeColor }}
-              >
-                {char.name}
-              </div>
+              {char.image ? (
+                <img
+                  src={char.image}
+                  alt={char.imageAlt}
+                  className={styles.characterImage}
+                />
+              ) : (
+                /* Fallback silhouette if no image is available yet */
+                <div 
+                  className={styles.silhouette}
+                  style={{ backgroundColor: char.themeColor }}
+                >
+                  {char.name}
+                </div>
+              )}
             </div>
             <div className={styles.characterName} style={{ color: char.themeColor }}>
               {char.name}

@@ -8,6 +8,7 @@ export interface Character {
   accentColor: string;
   gradient: string;
   imageAlt: string;
+  image?: string; 
 }
 
 export const characters: Character[] = [
@@ -21,6 +22,7 @@ export const characters: Character[] = [
     accentColor: "#0A1F44", // Dark Navy
     gradient: "linear-gradient(135deg, #C62828 0%, #EF5350 100%)",
     imageAlt: "Spider-Man hero pose",
+    image: "/characters/spider-man.png",
   },
   {
     id: "iron-man",
@@ -32,6 +34,7 @@ export const characters: Character[] = [
     accentColor: "#2C2C2C", // Gunmetal
     gradient: "linear-gradient(135deg, #8B0000 0%, #D4AF37 100%)",
     imageAlt: "Iron Man in armor suit",
+    image: "/characters/iron-man.png",
   },
   {
     id: "captain-america",
@@ -43,6 +46,7 @@ export const characters: Character[] = [
     accentColor: "#C62828", // Crimson Red
     gradient: "linear-gradient(135deg, #1E3A8A 0%, #FFFFFF 100%)",
     imageAlt: "Captain America with shield",
+    image: "/characters/captain-america.png",
   },
   {
     id: "thor",
@@ -54,6 +58,7 @@ export const characters: Character[] = [
     accentColor: "#111827", // Black
     gradient: "linear-gradient(135deg, #2563EB 0%, #93C5FD 100%)",
     imageAlt: "Thor God of Thunder",
+    image: "/characters/thor.png",
   },
   {
     id: "hulk",
@@ -65,5 +70,6 @@ export const characters: Character[] = [
     accentColor: "#2D2D2D", // Dark Gray
     gradient: "linear-gradient(135deg, #2E7D32 0%, #6A1B9A 100%)",
     imageAlt: "Incredible Hulk smashing",
+    image: "/characters/hulk.png",
   }
 ];

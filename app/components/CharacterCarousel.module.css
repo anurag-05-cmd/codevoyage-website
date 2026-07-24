@@ -42,24 +42,18 @@
 }
 
 .characterImageContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .characterImage {
-  position: relative;
-  z-index: 1;
-  width: 150%;
-  height: 150%;
-  object-fit: cover;
-  transform: skewX(15deg); /* un-skew the image inside */
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  transform: skewX(15deg);
 }
-
 .characterName {
   position: absolute;
   bottom: 0;
