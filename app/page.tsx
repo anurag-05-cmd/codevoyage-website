@@ -30,7 +30,7 @@ export default function Home() {
     : characters[activeCharacterIndex];
 
   const handleEnterInitiative = () => {
-    router.push(`/characters/${activeCharacter.id}`);
+    router.push('/event');
   };
 
   return (
