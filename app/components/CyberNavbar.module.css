@@ -3,10 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  background: rgba(22, 25, 38, 0.98);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 50;
-  position: relative;
+  background: rgba(22, 25, 38, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
 }
 
 .logo {

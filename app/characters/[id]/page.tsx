@@ -2,10 +2,17 @@
 
 import { use, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Trophy, UserPlus } from 'lucide-react';
 import { characters } from '../../data/characters';
 import styles from './CharacterPage.module.css';
+import CyberNavbar from '../../components/CyberNavbar';
+import SpiderManGame from './components/SpiderManGame';
+import IronManGame from './components/IronManGame';
+import CaptainAmericaGame from './components/CaptainAmericaGame';
+import ThorGame from './components/ThorGame';
+import HulkGame from './components/HulkGame';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -38,28 +45,31 @@ export default function CharacterPage({ params }: Props) {
     router.push(`/characters/${characters[nextIndex].id}`);
   };
 
-  const handleBack = () => {
-    router.push('/');
+  const handlePrev = () => {
+    const prevIndex = (currentIndex - 1 + characters.length) % characters.length;
+    router.push(`/characters/${characters[prevIndex].id}`);
   };
 
   return (
-    <motion.main 
-      className={styles.pageContainer}
-      ref={containerRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      style={{
-        '--theme-color': character.themeColor,
-        '--secondary-color': character.secondaryColor,
-        '--accent-color': character.accentColor,
-        '--hero-gradient': character.gradient,
-      } as React.CSSProperties}
-    >
-      <div className={styles.heroSection}>
-        {/* Background Text changed from MARVEL to the Character Name for a personalized feel */}
-        <div className={styles.backgroundText}>{character.name}</div>
+    <>
+      <CyberNavbar />
+      <motion.main 
+        className={styles.pageContainer}
+        ref={containerRef}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          '--theme-color': character.themeColor,
+          '--secondary-color': character.secondaryColor,
+          '--accent-color': character.accentColor,
+          '--hero-gradient': character.gradient,
+        } as React.CSSProperties}
+      >
+        <div className={styles.heroSection}>
+          {/* Background Text changed from MARVEL to the Character Name for a personalized feel */}
+          <div className={styles.backgroundText}>{character.name}</div>
 
         {/* Diagonal Colored Block with slight parallax */}
         <motion.div 
@@ -73,16 +83,14 @@ export default function CharacterPage({ params }: Props) {
 
         <div className={styles.contentWrapper}>
           <div className={styles.leftColumn}>
-            <div style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '1.5rem', marginBottom: '2rem' }}>
-              CODEVOYAGE
-            </div>
-            
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <div className={styles.breadcrumb}>Home / CHARACTERS</div>
+              <div className={styles.breadcrumb}>
+                <Link href="/" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dotted currentColor' }}>Home</Link> / CHARACTERS
+              </div>
               <h1 className={styles.title} style={{ color: character.themeColor }}>
                 {character.name}
               </h1>
@@ -155,11 +163,11 @@ export default function CharacterPage({ params }: Props) {
           </div>
         </div>
 
-        <button className={styles.backButton} onClick={handleBack}>
+        <button className={styles.backButton} onClick={handlePrev} title="Previous Character">
           <div className={styles.backButtonIcon}><ArrowLeft size={20} /></div>
         </button>
 
-        <button className={styles.nextButton} onClick={handleNext}>
+        <button className={styles.nextButton} onClick={handleNext} title="Next Character">
           <div className={styles.nextButtonIcon}><ArrowRight size={20} /></div>
         </button>
 
@@ -233,6 +241,31 @@ export default function CharacterPage({ params }: Props) {
         </motion.div>
       </section>
 
+      {/* SPIDER-MAN MINI-GAME TRAINING SIMULATION */}
+      {character.id === 'spider-man' && (
+        <SpiderManGame themeColor={character.themeColor} />
+      )}
+
+      {/* IRON MAN MINI-GAME TACTICAL SIMULATION */}
+      {character.id === 'iron-man' && (
+        <IronManGame themeColor={character.themeColor} />
+      )}
+
+      {/* CAPTAIN AMERICA MINI-GAME */}
+      {character.id === 'captain-america' && (
+        <CaptainAmericaGame themeColor={character.themeColor} />
+      )}
+
+      {/* THOR MINI-GAME */}
+      {character.id === 'thor' && (
+        <ThorGame themeColor={character.themeColor} />
+      )}
+
+      {/* HULK MINI-GAME */}
+      {character.id === 'hulk' && (
+        <HulkGame themeColor={character.themeColor} />
+      )}
+
       {/* SECTION 3: ACTUAL EVENT SNIPPETS // CODE VOYAGE INTEL */}
       <section className={styles.section}>
         <motion.h2 
@@ -301,5 +334,6 @@ export default function CharacterPage({ params }: Props) {
       </section>
 
     </motion.main>
+    </>
   );
 }

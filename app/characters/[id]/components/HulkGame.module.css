@@ -1,0 +1,244 @@
+.gameSection {
+  padding: 4rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #22c55e; /* Gamma Radioactive Green */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.gameWrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: #0a100d;
+  border: 2px solid #22c55e;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(34, 197, 94, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+/* UI Overlay Cards */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 16, 13, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  z-index: 20;
+}
+
+.overlayBadge {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #22c55e; /* Gamma Green */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  background: rgba(34, 197, 94, 0.15);
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 6px;
+}
+
+.overlayTitle {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.overlayDesc {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  max-width: 650px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.instructionBox {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.keyBadge {
+  background: #22c55e;
+  color: #000000;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.4);
+}
+
+.instructionText {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.playButton {
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  padding: 0.8rem 2.5rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.playButton:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.7);
+}
+
+/* In-Game HUD */
+.hud {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.scoreBox {
+  background: rgba(10, 16, 13, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 1px;
+}
+
+.highScoreBox {
+  background: rgba(10, 16, 13, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #facc15;
+  letter-spacing: 1px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 150px;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+}
+
+.statLabel {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .gameSection {
+    padding: 2.5rem 1.5rem;
+  }
+  .gameWrapper {
+    height: 380px;
+  }
+  .overlayTitle {
+    font-size: 2.3rem;
+  }
+  .instructionBox {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
