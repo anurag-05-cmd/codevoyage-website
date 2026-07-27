@@ -163,7 +163,7 @@
 }
 
 .backButtonIcon {
-  transform: skewX(20deg); /* un-skew the icon */
+  transform: skewX(20deg);
 }
 
 .nextButton {
@@ -214,7 +214,7 @@
   width: 30px;
 }
 
-/* --- Hackathon Sections --- */
+/* --- Hackathon & Trivia Sections --- */
 
 .section {
   padding: 6rem 3rem;
@@ -222,19 +222,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 60vh;
   position: relative;
   z-index: 5;
   background: var(--background);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
   font-style: italic;
   text-transform: uppercase;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   letter-spacing: 2px;
   text-align: center;
   text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
@@ -242,55 +243,108 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1250px;
 }
 
+/* Modern straightened, high-tech cyber cards */
 .card {
   padding: 2.5rem;
-  background: var(--card-bg);
-  transform: skewX(-10deg);
-  transition: transform 0.3s ease, filter 0.3s ease;
-  border-right: 4px solid var(--theme-color);
-  box-shadow: -10px 10px 20px rgba(0,0,0,0.5);
+  background: #161926;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 4px solid var(--theme-color);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
   position: relative;
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card:hover {
-  transform: skewX(-10deg) scale(1.05) translateY(-10px);
-  filter: brightness(1.2);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--theme-color);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.1);
 }
 
 .cardContent {
-  transform: skewX(10deg); /* unskew internal content */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .cardTitle {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   font-style: italic;
   margin-bottom: 1rem;
   text-transform: uppercase;
   color: var(--theme-color);
+  letter-spacing: 1px;
 }
 
 .cardText {
-  color: #d1d5db;
-  line-height: 1.6;
+  color: #cbd5e1;
+  line-height: 1.65;
   font-family: var(--font-sans);
+  font-size: 1.05rem;
+}
+
+/* Widescreen Synergy Box */
+.synergyBox {
+  padding: 3.5rem 3.5rem;
+  background: linear-gradient(135deg, rgba(22, 25, 38, 0.9) 0%, rgba(15, 17, 26, 0.95) 100%);
+  border-radius: 24px;
+  border: 2px solid var(--theme-color);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(255, 255, 255, 0.03);
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.synergyBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 255, 255, 0.15);
+}
+
+.synergyBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--theme-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--theme-color);
+}
+
+.synergyText {
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  margin: 0;
 }
 
 .darkSection {
-  background: #111827;
+  background: #111420;
 }
 
 .formContainer {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -298,29 +352,30 @@
 
 .input {
   width: 100%;
-  padding: 1.5rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  font-size: 1.2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(22, 25, 38, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-family: var(--font-sans);
   color: white;
   outline: none;
-  transform: skewX(-10deg);
-  transition: border-color 0.3s, background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .input:focus {
   border-color: var(--theme-color);
-  background: rgba(255,255,255,0.1);
+  background: #161926;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 .input::placeholder {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .submitButton {
-  padding: 1.5rem 2rem;
-  font-size: 2rem;
+  padding: 1.25rem 2rem;
+  font-size: 1.4rem;
   font-family: var(--font-heading);
   font-weight: 700;
   font-style: italic;
@@ -329,14 +384,30 @@
   background: var(--theme-color);
   border: none;
   cursor: pointer;
-  transform: skewX(-10deg);
-  transition: transform 0.2s, filter 0.2s;
-  box-shadow: -5px 5px 0px rgba(0,0,0,0.5);
-  margin-top: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  margin-top: 0.5rem;
+  letter-spacing: 1.5px;
 }
 
 .submitButton:hover {
-  transform: skewX(-10deg) scale(1.05) translateY(-2px);
-  filter: brightness(1.2);
+  transform: scale(1.03) translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.3);
 }
 
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+  .synergyBox {
+    padding: 2rem 1.5rem;
+  }
+  .synergyText {
+    font-size: 1.1rem;
+  }
+  .card {
+    padding: 1.75rem;
+  }
+}

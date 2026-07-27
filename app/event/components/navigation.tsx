@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
@@ -15,7 +16,7 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24)
 
-      const sections = ["about", "schedule", "tracks", "prizes", "judges", "faqs", "contact"]
+      const sections = ["about", "schedule", "tracks", "prizes", "judges", "sponsors", "faqs", "contact"]
       const current = sections.find((id) => {
         const el = document.getElementById(id)
         if (!el) return false
@@ -38,18 +39,22 @@ export default function Navigation() {
   }, [isMobileMenuOpen])
 
   const navItems = [
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Schedule", href: "#schedule" },
     { name: "Tracks", href: "#tracks" },
     { name: "Prizes", href: "#prizes" },
     { name: "Judges", href: "#judges" },
+    { name: "Sponsors", href: "#sponsors" },
     { name: "FAQs", href: "#faqs" },
     { name: "Contact", href: "#contact" },
   ]
 
   const handleSmoothScroll = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: "smooth" })
+    }
     setIsMobileMenuOpen(false)
   }
 
@@ -95,20 +100,18 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center gap-6">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.slice(1)
-                return (
-                  <button
-                    key={item.name}
-                    onClick={() => handleSmoothScroll(item.href)}
-                    className={[
-                      "relative text-[15px] font-medium tracking-wide",
-                      "text-zinc-200/85 hover:text-white transition-colors",
-                      "px-1 py-1",
-                      "group/nav",
-                      isActive ? "text-white" : "",
-                    ].join(" ")}
-                  >
+                const isRoute = item.href.startsWith("/")
+                const className = [
+                  "relative text-[15px] font-medium tracking-wide",
+                  "text-zinc-200/85 hover:text-white transition-colors",
+                  "px-1 py-1",
+                  "group/nav",
+                  isActive ? "text-white" : "",
+                ].join(" ")
+
+                const content = (
+                  <>
                     <span>{item.name}</span>
-                    {/* underline glow (white/violet) */}
                     <span
                       className={[
                         "absolute left-0 -bottom-1 h-[2px] w-full",
@@ -118,6 +121,24 @@ export default function Navigation() {
                       ].join(" ")}
                     />
                     <span className="absolute inset-0 rounded-md opacity-0 group-hover/nav:opacity-100 transition-opacity duration-300 blur-[6px] bg-white/5" />
+                  </>
+                )
+
+                if (isRoute) {
+                  return (
+                    <Link key={item.name} href={item.href} className={className}>
+                      {content}
+                    </Link>
+                  )
+                }
+
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => handleSmoothScroll(item.href)}
+                    className={className}
+                  >
+                    {content}
                   </button>
                 )
               })}
@@ -176,15 +197,32 @@ export default function Navigation() {
               <div className="grid gap-1.5 p-3">
                 {navItems.map((item, i) => {
                   const isActive = activeSection === item.href.slice(1)
+                  const isRoute = item.href.startsWith("/")
+                  const className = [
+                    "w-full text-left rounded-xl px-3 py-2 text-[15px] font-medium block",
+                    "transition-all duration-300",
+                    isActive ? "text-white bg-white/5" : "text-zinc-200/85 hover:text-white hover:bg-white/5",
+                  ].join(" ")
+
+                  if (isRoute) {
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={className}
+                        style={{ animation: isMobileMenuOpen ? `slideIn .18s ${i * 40}ms both` : "none" }}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  }
+
                   return (
                     <button
                       key={item.name}
                       onClick={() => handleSmoothScroll(item.href)}
-                      className={[
-                        "w-full text-left rounded-xl px-3 py-2 text-[15px] font-medium",
-                        "transition-all duration-300",
-                        isActive ? "text-white bg-white/5" : "text-zinc-200/85 hover:text-white hover:bg-white/5",
-                      ].join(" ")}
+                      className={className}
                       style={{ animation: isMobileMenuOpen ? `slideIn .18s ${i * 40}ms both` : "none" }}
                     >
                       {item.name}

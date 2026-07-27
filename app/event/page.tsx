@@ -15,9 +15,9 @@ import FAQSection from "./components/faq-section"
 import Footer from "./components/footer"
 
 export const metadata: Metadata = {
-  title: "Code Voyage — Hackathon",
+  title: "CodeVoyage — Hackathon",
   description:
-    "Code Voyage is a 9 hour offline on-campus hackathon sprint. Build real world prototypes across AI/ML, Web & App, AR/VR, IoT and Cybersecurity.",
+    "CodeVoyage is a 9 hour offline on-campus hackathon sprint. Build real world prototypes across AI/ML, Web & App, AR/VR, IoT and Cybersecurity.",
 }
 
 export default function EventPage() {

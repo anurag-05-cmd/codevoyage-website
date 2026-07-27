@@ -1,0 +1,309 @@
+.container {
+  min-height: 100vh;
+  background: #13141c; /* Deep, clean, professional dark slate */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 4rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  background: rgba(253, 224, 71, 0.1);
+  padding: 0.25rem 1rem;
+  border: 1px solid rgba(253, 224, 71, 0.3);
+  transform: skewX(-10deg);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.8), 0 0 30px rgba(220, 38, 38, 0.5);
+  color: var(--primary);
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  color: #94a3b8;
+  max-width: 700px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.sectionBox {
+  background: rgba(22, 25, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-3px);
+  background: rgba(220, 38, 38, 0.25);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+.contactName {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.phoneChip {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(220, 38, 38, 0.4), rgba(220, 38, 38, 0.2));
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: var(--accent-yellow);
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: #e2e8f0;
+}
+
+.infoRow:last-child {
+  border-bottom: none;
+}
+
+.socialRow {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.socialBtn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.socialBtn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.5);
+}
+
+.mapContainer {
+  margin-top: 1.75rem;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.mapIframe {
+  width: 100%;
+  height: 320px;
+  border: none;
+  display: block;
+}
+
+.faqSection {
+  margin-top: 3rem;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+
+.faqCard {
+  background: rgba(15, 17, 26, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.75rem;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.faqCard:hover {
+  border-color: var(--accent-yellow);
+  background: rgba(22, 25, 38, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.faqQ {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.faqA {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Professional Tech Background Elements */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowRed {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.18) 0%, rgba(220, 38, 38, 0.05) 50%, transparent 70%);
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowCyan {
+  position: absolute;
+  bottom: 5%;
+  left: -150px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(103, 232, 249, 0.12) 0%, rgba(103, 232, 249, 0.03) 50%, transparent 70%);
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowYellow {
+  position: absolute;
+  top: 40%;
+  right: 15%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(253, 224, 71, 0.08) 0%, rgba(253, 224, 71, 0.02) 50%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 992px) {
+  .topSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 2rem 1.5rem;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+  .contactCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

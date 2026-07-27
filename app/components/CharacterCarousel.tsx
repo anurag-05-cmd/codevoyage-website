@@ -22,6 +22,10 @@ export default function CharacterCarousel({ characters, onHoverCharacter }: Prop
 
   return (
     <div className={styles.carouselContainer}>
+      <div className={styles.sectionHeader}>
+        <span className={styles.headerDot} />
+        SELECT HERO OPERATIVE // ROSTER
+      </div>
       <div 
         className={styles.carouselTrack} 
         ref={scrollRef}

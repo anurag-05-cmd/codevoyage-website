@@ -1,94 +1,150 @@
 .carouselContainer {
   width: 100%;
-  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  overflow: visible;
+  z-index: 30;
+  padding: 0.5rem 0 0;
+}
+
+.sectionHeader {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.headerDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-yellow);
 }
 
 .carouselTrack {
   display: flex;
-  gap: 1.5rem; /* Add more gap */
-  overflow-x: visible;
-  padding: 1rem 1rem 1rem 0; /* Remove left padding to shift it left */
-  margin-left: -1rem; /* Shift slightly left */
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  flex-wrap: nowrap;
+  padding: 0.25rem 0 0.5rem;
 }
 
+/* Straightened, professional, modern portrait cards */
 .characterCard {
-  width: 90px;
-  height: 160px;
-  flex: 0 0 auto;
+  width: 140px;
+  height: 180px;
   position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background: var(--card-bg);
-  transform: skewX(-15deg);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease, width 0.3s ease, box-shadow 0.3s ease;
-  border-right: 3px solid rgba(255,255,255,0.15);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background: #161926;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
-  box-shadow: -5px 5px 15px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
 }
 
 .characterCard:hover {
-  transform: skewX(-15deg) scale(1.12) translateY(-12px);
-  width: 110px;
-  filter: brightness(1.25);
-  z-index: 10;
-  border-right-color: var(--accent-yellow);
-  box-shadow: -8px 12px 25px rgba(0,0,0,0.8), 0 0 20px rgba(253, 224, 71, 0.4);
+  transform: translateY(-8px) scale(1.06);
+  z-index: 20;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(103, 232, 249, 0.35);
 }
 
 .characterImageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .characterImage {
-  width: auto;
+  width: 100%;
   height: 100%;
-  max-width: none;
-  object-fit: contain;
-  transform: skewX(15deg);
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.5s ease;
 }
+
+.characterCard:hover .characterImage {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+}
+
 .characterName {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.8);
-  padding: 0.25rem;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: linear-gradient(0deg, rgba(15, 17, 26, 0.98) 0%, rgba(15, 17, 26, 0.85) 75%, transparent 100%);
+  padding: 1rem 0.4rem 0.5rem;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1rem; /* Smaller text */
+  font-size: 0.9rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
   color: white;
-  transform: skewX(15deg); /* un-skew the text */
-  opacity: 0.8;
-  transition: opacity 0.3s;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .characterCard:hover .characterName {
-  opacity: 1;
   color: var(--accent-yellow);
+  transform: translateY(-2px);
 }
 
 /* Fallback silhouettes if no images */
 .silhouette {
   width: 100%;
   height: 100%;
-  background: #333;
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255,255,255,0.2);
-  font-weight: bold;
+  color: white;
+  font-weight: 800;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  transform: skewX(15deg); /* unskew the background text */
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 992px) {
+  .carouselTrack {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .characterCard {
+    width: 125px;
+    height: 165px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselTrack {
+    gap: 0.75rem;
+  }
+  .characterCard {
+    width: 110px;
+    height: 150px;
+  }
+  .characterName {
+    font-size: 0.8rem;
+  }
 }

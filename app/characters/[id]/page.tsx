@@ -3,7 +3,7 @@
 import { use, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Globe, Link2, MessageCircle, Share2, Calendar, Trophy, UserPlus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Trophy, UserPlus } from 'lucide-react';
 import { characters } from '../../data/characters';
 import styles from './CharacterPage.module.css';
 
@@ -90,18 +90,6 @@ export default function CharacterPage({ params }: Props) {
                 {character.description}
               </p>
             </motion.div>
-
-            <motion.div 
-              className={styles.socialIcons}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              <Globe className={styles.icon} size={20} />
-              <Link2 className={styles.icon} size={20} />
-              <MessageCircle className={styles.icon} size={20} />
-              <Share2 className={styles.icon} size={20} />
-            </motion.div>
           </div>
 
           <div className={styles.rightColumn}>
@@ -114,12 +102,14 @@ export default function CharacterPage({ params }: Props) {
               {character.image ? (
                 <div
                   style={{
-                    width: '350px',
-                    height: '650px',
-                    clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
-                    boxShadow: `0 30px 60px ${character.themeColor}66`,
+                    width: '400px',
+                    height: '580px',
+                    borderRadius: '24px',
+                    border: `2px solid ${character.themeColor}88`,
+                    boxShadow: `0 30px 70px rgba(0,0,0,0.8), 0 0 45px ${character.themeColor}55`,
                     overflow: 'hidden',
                     position: 'relative',
+                    background: '#161926',
                   }}
                 >
                   <img
@@ -129,27 +119,29 @@ export default function CharacterPage({ params }: Props) {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
+                      objectPosition: 'center top',
                     }}
                   />
                 </div>
               ) : (
                 <div 
                   style={{
-                    width: '350px',
-                    height: '650px',
+                    width: '400px',
+                    height: '580px',
+                    borderRadius: '24px',
+                    border: `2px solid ${character.themeColor}88`,
                     background: character.gradient,
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
-                    clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     color: 'white',
                     fontWeight: '900',
-                    fontSize: '5rem',
+                    fontSize: '4.5rem',
                     letterSpacing: '5px',
                     transform: 'rotate(-90deg)',
-                    boxShadow: `0 30px 60px ${character.themeColor}66`,
+                    boxShadow: `0 30px 70px rgba(0,0,0,0.8), 0 0 45px ${character.themeColor}55`,
                     transition: 'all 0.5s ease',
                     fontFamily: 'var(--font-heading)',
                     textTransform: 'uppercase',
@@ -181,7 +173,7 @@ export default function CharacterPage({ params }: Props) {
         </div>
       </div>
 
-      {/* About Section */}
+      {/* SECTION 1: GENERAL TRIVIA ABOUT THE CHARACTER */}
       <section className={styles.section}>
         <motion.h2 
           className={styles.sectionTitle} 
@@ -191,29 +183,27 @@ export default function CharacterPage({ params }: Props) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Mission Briefing
+          Operative Trivia // Technical Specs
         </motion.h2>
         <div className={styles.grid}>
-          <div className={styles.card}>
-            <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>The Objective</h3>
-              <p className={styles.cardText}>
-                CodeVoyage is an elite hackathon bringing together the world's most brilliant minds to solve complex problems and build innovative solutions over an intense 48-hour period.
-              </p>
+          {character.trivia?.map((item, index) => (
+            <div key={index} className={styles.card} style={{ borderLeftColor: character.themeColor }}>
+              <div className={styles.cardContent}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: character.themeColor, boxShadow: `0 0 10px ${character.themeColor}` }} />
+                  <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.9rem', color: '#94a3b8', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                    SPEC // 0{index + 1}
+                  </span>
+                </div>
+                <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>{item.title}</h3>
+                <p className={styles.cardText}>{item.detail}</p>
+              </div>
             </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>The Arsenal</h3>
-              <p className={styles.cardText}>
-                You have access to state-of-the-art APIs, powerful computing resources, and mentorship from industry veterans. Use your skills to create something extraordinary.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Schedule Section (Dark) */}
+      {/* SECTION 2: HACKATHON SYNERGY & DOMAIN CONNECTION */}
       <section className={`${styles.section} ${styles.darkSection}`}>
         <motion.h2 
           className={styles.sectionTitle}
@@ -222,34 +212,28 @@ export default function CharacterPage({ params }: Props) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Operation Timeline
+          Hackathon Synergy // Code Voyage
         </motion.h2>
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <div className={styles.cardContent}>
-              <Calendar size={32} style={{ color: character.themeColor, marginBottom: '1rem' }} />
-              <h3 className={styles.cardTitle}>Day 1: Assembly</h3>
-              <p className={styles.cardText}>Opening ceremony, team formation, and the start of hacking. Briefings from our sponsors.</p>
-            </div>
+        
+        <motion.div 
+          className={styles.synergyBox}
+          style={{ borderColor: character.themeColor }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.synergyBadge} style={{ borderColor: character.themeColor, color: character.themeColor }}>
+            <Trophy size={18} />
+            DOMAIN SPECIALTY: {character.domainSpecialty}
           </div>
-          <div className={styles.card}>
-            <div className={styles.cardContent}>
-              <Calendar size={32} style={{ color: character.themeColor, marginBottom: '1rem' }} />
-              <h3 className={styles.cardTitle}>Day 2: The Grind</h3>
-              <p className={styles.cardText}>Intense hacking, midnight snacks, mini-events, and mentor office hours.</p>
-            </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardContent}>
-              <Calendar size={32} style={{ color: character.themeColor, marginBottom: '1rem' }} />
-              <h3 className={styles.cardTitle}>Day 3: Victory</h3>
-              <p className={styles.cardText}>Project submissions, presentations, judging, and the final awards ceremony.</p>
-            </div>
-          </div>
-        </div>
+          <p className={styles.synergyText}>
+            {character.hackathonConnection}
+          </p>
+        </motion.div>
       </section>
 
-      {/* Prizes Section */}
+      {/* SECTION 3: ACTUAL EVENT SNIPPETS // CODE VOYAGE INTEL */}
       <section className={styles.section}>
         <motion.h2 
           className={styles.sectionTitle} 
@@ -259,27 +243,40 @@ export default function CharacterPage({ params }: Props) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Bounties
+          Code Voyage // Event Intel
         </motion.h2>
         <div className={styles.grid}>
-          <div className={styles.card}>
+          <div className={styles.card} style={{ borderLeftColor: character.themeColor }}>
             <div className={styles.cardContent}>
-              <Trophy size={40} style={{ color: character.themeColor, marginBottom: '1rem' }} />
-              <h3 className={styles.cardTitle}>First Place</h3>
-              <p className={styles.cardText}>$5,000 cash prize, exclusive hardware, and guaranteed interviews with our top sponsors.</p>
+              <Calendar size={36} style={{ color: character.themeColor, marginBottom: '1.25rem' }} />
+              <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>9-Hour Offline Sprint</h3>
+              <p className={styles.cardText}>
+                An intense, on-campus sprint where teams of 2 to 4 build real-world working prototypes from scratch. Open to all undergraduate colleges with expert on-site mentoring and networking.
+              </p>
             </div>
           </div>
-          <div className={styles.card}>
+          <div className={styles.card} style={{ borderLeftColor: character.themeColor }}>
             <div className={styles.cardContent}>
-              <Trophy size={32} style={{ color: character.themeColor, marginBottom: '1rem', opacity: 0.8 }} />
-              <h3 className={styles.cardTitle}>Second Place</h3>
-              <p className={styles.cardText}>$2,500 cash prize and premium software subscriptions for a year.</p>
+              <Trophy size={36} style={{ color: character.themeColor, marginBottom: '1.25rem' }} />
+              <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>On-Spot Challenges</h3>
+              <p className={styles.cardText}>
+                Tackle live, secret problem statements revealed at countdown across cutting-edge tracks: AI & Machine Learning, Web & Mobile Apps, AR & VR, IoT, Cybersecurity, and Blockchain.
+              </p>
+            </div>
+          </div>
+          <div className={styles.card} style={{ borderLeftColor: character.themeColor }}>
+            <div className={styles.cardContent}>
+              <UserPlus size={36} style={{ color: character.themeColor, marginBottom: '1.25rem' }} />
+              <h3 className={styles.cardTitle} style={{ color: character.themeColor }}>Bounties & Career Perks</h3>
+              <p className={styles.cardText}>
+                Compete for $5,000 & $2,500 prize pools, exclusive hardware bounties, official merit certificates, and guaranteed direct internship interviews with our headline tech sponsors.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Registration Form */}
+      {/* Registration Portal */}
       <section className={`${styles.section} ${styles.darkSection}`}>
         <motion.h2 
           className={styles.sectionTitle}
@@ -288,16 +285,16 @@ export default function CharacterPage({ params }: Props) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Join The Initiative
+          Enlist For The Sprint
         </motion.h2>
         <div className={styles.formContainer}>
-          <input type="text" placeholder="Hero Name (Full Name)" className={styles.input} />
+          <input type="text" placeholder="Operative Name (Full Name)" className={styles.input} />
           <input type="email" placeholder="Comms Link (Email Address)" className={styles.input} />
-          <input type="text" placeholder="Superpower (Primary Skill/Stack)" className={styles.input} />
-          <button className={styles.submitButton}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-              <UserPlus size={20} />
-              Enlist Now
+          <input type="text" placeholder="Domain Expertise (Primary Tech Stack / Track)" className={styles.input} />
+          <button className={styles.submitButton} style={{ backgroundColor: character.themeColor }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+              <UserPlus size={22} />
+              Register Team For Code Voyage
             </div>
           </button>
         </div>

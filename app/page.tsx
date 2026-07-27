@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, ArrowRight } from 'lucide-react';
 import { characters } from './data/characters';
 import CharacterCarousel from './components/CharacterCarousel';
+import CyberNavbar from './components/CyberNavbar';
 import styles from './Home.module.css';
 
 export default function Home() {
@@ -30,7 +32,7 @@ export default function Home() {
     : characters[activeCharacterIndex];
 
   const handleEnterInitiative = () => {
-    router.push('/event');
+    router.push('/events');
   };
 
   return (
@@ -58,26 +60,11 @@ export default function Home() {
         }} 
       />
 
-      <header className={styles.header}>
-        <div className={styles.logo}>CODEVOYAGE</div>
-        
-        <nav className={styles.navLinks}>
-          <span className={styles.navLink}>HERO</span>
-          <span className={styles.slash}>/</span>
-          <span className={styles.navLink}>NEWS</span>
-          <span className={styles.slash}>/</span>
-          <span className={styles.navLink}>CONTACT</span>
-          <span className={styles.slash}>/</span>
-          <span className={styles.navLink}>ABOUT US</span>
-          <span className={styles.slash}>/</span>
-          <span className={styles.navLink}>EVENT</span>
-          
-          <button className={styles.navButton}>SIGN UP</button>
-        </nav>
-      </header>
+      <CyberNavbar />
 
       <div className={styles.mainContent}>
-        <div className={styles.leftContent}>
+        <div className={styles.heroTopRow}>
+          <div className={styles.leftContent}>
           <motion.div 
             className={styles.heroBadge}
             key={`badge-${activeCharacter.id}`}
@@ -111,13 +98,22 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <button 
-            className={styles.ctaButton}
-            style={{ background: activeCharacter.themeColor, color: '#ffffff' }}
-            onClick={handleEnterInitiative}
-          >
-            ENTER INITIATIVE <ArrowRight size={24} style={{ display: 'inline', marginLeft: '0.5rem', verticalAlign: 'middle' }} />
-          </button>
+          <div className={styles.buttonGroup}>
+            <button 
+              className={styles.ctaButton}
+              style={{ background: activeCharacter.themeColor, color: '#ffffff' }}
+              onClick={handleEnterInitiative}
+            >
+              ENTER INITIATIVE <ArrowRight size={22} style={{ display: 'inline', marginLeft: '0.4rem', verticalAlign: 'middle' }} />
+            </button>
+
+            <button 
+              className={styles.chooseHeroButton}
+              onClick={() => router.push(`/characters/${activeCharacter.id}`)}
+            >
+              CHOOSE HERO <ArrowRight size={22} style={{ display: 'inline', marginLeft: '0.4rem', verticalAlign: 'middle' }} />
+            </button>
+          </div>
         </div>
 
         <div className={styles.rightContent}>
@@ -135,33 +131,50 @@ export default function Home() {
                 y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
               }}
             >
-              {/* Massive Hero Silhouette */}
+              {/* Professional Straightened Hero Photo Display */}
               <div style={{
-                width: '400px',
-                height: '650px',
-                background: activeCharacter.gradient,
-                clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)',
+                width: '280px',
+                height: '360px',
+                borderRadius: '20px',
+                border: `2px solid ${activeCharacter.themeColor}88`,
+                background: '#161926',
+                boxShadow: `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${activeCharacter.themeColor}44`,
+                overflow: 'hidden',
+                position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: `0 30px 70px ${activeCharacter.themeColor}88, inset 0 0 30px rgba(255,255,255,0.3)`
               }}>
-                <div style={{
-                  fontSize: '7rem',
-                  fontWeight: 900,
-                  color: 'rgba(255,255,255,0.95)',
-                  textTransform: 'uppercase',
-                  transform: 'rotate(-90deg)',
-                  fontFamily: 'var(--font-heading)',
-                  whiteSpace: 'nowrap',
-                  letterSpacing: '6px',
-                  textShadow: '0 10px 20px rgba(0,0,0,0.5)'
-                }}>
-                  {activeCharacter.name}
-                </div>
+                {activeCharacter.image ? (
+                  <img
+                    src={activeCharacter.image}
+                    alt={activeCharacter.imageAlt}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    fontSize: '3.5rem',
+                    fontWeight: 900,
+                    color: 'rgba(255,255,255,0.95)',
+                    textTransform: 'uppercase',
+                    transform: 'rotate(-90deg)',
+                    fontFamily: 'var(--font-heading)',
+                    whiteSpace: 'nowrap',
+                    letterSpacing: '4px',
+                    textShadow: '0 10px 20px rgba(0,0,0,0.5)'
+                  }}>
+                    {activeCharacter.name}
+                  </div>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
         </div>
 
         <div className={styles.carouselContainer}>
