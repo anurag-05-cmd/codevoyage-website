@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Zap, Target, Hammer } from 'lucide-react';
+import { Play, RotateCcw, Zap, Target, Hammer, ArrowUp, ArrowDown } from 'lucide-react';
 import styles from './HulkGame.module.css';
 
 interface Props {
@@ -433,6 +433,25 @@ export default function HulkGame({ themeColor = '#22c55e' }: Props) {
             <div className={styles.highScoreBox}>
               RECORD: {highScore} PTS
             </div>
+          </div>
+        )}
+
+        {gameState === 'PLAYING' && (
+          <div className={styles.mobileControls}>
+            <button 
+              className={styles.actionButton}
+              onTouchStart={(e) => { e.preventDefault(); e.stopPropagation(); jumpTriggerRef.current = true; }}
+            >
+              <ArrowUp size={24} />
+              JUMP
+            </button>
+            <button 
+              className={styles.actionButton}
+              onTouchStart={(e) => { e.preventDefault(); e.stopPropagation(); smashTriggerRef.current = true; }}
+            >
+              <ArrowDown size={24} />
+              SMASH
+            </button>
           </div>
         )}
 

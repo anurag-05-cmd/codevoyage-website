@@ -273,29 +273,7 @@
   z-index: 0;
 }
 
-.accentCyan {
-  position: absolute;
-  bottom: 0;
-  right: 35%; /* Move it to the right */
-  width: 10px; /* Thinner */
-  height: 150%;
-  background: var(--accent-cyan);
-  transform: rotate(25deg);
-  z-index: 2;
-  box-shadow: 0 0 20px var(--accent-cyan);
-}
 
-.accentCyanSmall {
-  position: absolute;
-  top: 0;
-  right: 25%;
-  width: 15px;
-  height: 150%;
-  background: var(--accent-cyan);
-  transform: rotate(25deg);
-  z-index: 2;
-  box-shadow: 0 0 20px var(--accent-cyan);
-}
 
 @media (max-width: 992px) {
   .heroTopRow {
@@ -308,5 +286,66 @@
   }
   .rightContent {
     min-height: 350px;
+  }
+}
+
+.heroImageWrapper {
+  width: 280px;
+  height: 360px;
+  border-radius: 20px;
+  background: #161926;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 0.5rem 1rem 0.5rem;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .subtitleBox {
+    max-width: 100%;
+    padding: 0.5rem 1rem;
+    min-height: auto;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .buttonGroup {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .ctaButton, .chooseHeroButton {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  .rightContent {
+    min-height: 280px;
+  }
+  .heroImageWrapper {
+    width: 220px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .ctaButton, .chooseHeroButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+  .heroImageWrapper {
+    width: 180px;
+    height: 240px;
+  }
+  .heroBadge {
+    font-size: 0.9rem;
   }
 }

@@ -371,14 +371,19 @@ export default function SpiderManGame({ themeColor = '#ef4444' }: Props) {
 
         {/* In-Game HUD overlay */}
         {gameState === 'PLAYING' && (
-          <div className={styles.hud}>
-            <div className={styles.scoreBox}>
-              DISTANCE: {score} M
+          <>
+            <div className={styles.hud}>
+              <div className={styles.scoreBox}>
+                DISTANCE: {score} M
+              </div>
+              <div className={styles.highScoreBox}>
+                BEST: {highScore} M
+              </div>
             </div>
-            <div className={styles.highScoreBox}>
-              BEST: {highScore} M
+            <div className={styles.mobileHint}>
+              TAP & HOLD TO SWING
             </div>
-          </div>
+          </>
         )}
 
         {/* Start / Game Over Screens */}

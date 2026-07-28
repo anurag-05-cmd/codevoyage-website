@@ -37,28 +37,12 @@ export default function Home() {
 
   return (
     <main className={styles.container}>
-      {/* Aggressive Background Shapes */}
+      {/* Minimal Background Shapes */}
       <div 
         className={styles.accentYellow} 
         style={{ transition: 'background 0.5s ease' }} 
       />
       <div className={styles.diagonalBg} />
-      <div 
-        className={styles.accentCyan} 
-        style={{ 
-          background: activeCharacter.themeColor,
-          boxShadow: `0 0 25px ${activeCharacter.themeColor}`,
-          transition: 'all 0.5s ease' 
-        }} 
-      />
-      <div 
-        className={styles.accentCyanSmall} 
-        style={{ 
-          background: activeCharacter.themeColor,
-          boxShadow: `0 0 20px ${activeCharacter.themeColor}`,
-          transition: 'all 0.5s ease' 
-        }} 
-      />
 
       <CyberNavbar />
 
@@ -132,18 +116,11 @@ export default function Home() {
               }}
             >
               {/* Professional Straightened Hero Photo Display */}
-              <div style={{
-                width: '280px',
-                height: '360px',
-                borderRadius: '20px',
+              <div 
+                className={styles.heroImageWrapper}
+                style={{
                 border: `2px solid ${activeCharacter.themeColor}88`,
-                background: '#161926',
                 boxShadow: `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${activeCharacter.themeColor}44`,
-                overflow: 'hidden',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
               }}>
                 {activeCharacter.image ? (
                   <img

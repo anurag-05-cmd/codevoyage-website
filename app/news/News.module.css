@@ -245,3 +245,30 @@
     color: var(--accent-cyan);
   }
 }
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 1.5rem 1rem;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .sectionHeader {
+    font-size: 2rem;
+  }
+  .newsCard {
+    padding: 1.25rem;
+  }
+  .newsTitle {
+    font-size: 1.4rem;
+  }
+  .timelineCard {
+    padding: 1.25rem;
+  }
+  .timelineTitle {
+    font-size: 1.3rem;
+  }
+}

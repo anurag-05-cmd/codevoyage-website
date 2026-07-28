@@ -397,6 +397,46 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.3);
 }
 
+@media (max-width: 992px) {
+  .contentWrapper {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .leftColumn, .rightColumn {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  .leftColumn {
+    margin-bottom: 3rem;
+  }
+  .description {
+    margin: 0 auto 3rem;
+  }
+  .title {
+    font-size: 5rem;
+  }
+  .backgroundText {
+    font-size: 8rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .characterDisplay {
+    height: auto;
+    padding-bottom: 3rem;
+  }
+  .backButton {
+    left: 5%;
+  }
+  .nextButton {
+    right: 5%;
+  }
+  .paginationLines {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .sectionTitle {
     font-size: 2.5rem;
@@ -409,5 +449,38 @@
   }
   .card {
     padding: 1.75rem;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+  .backgroundText {
+    font-size: 5rem;
+  }
+  .section {
+    padding: 4rem 1.5rem;
+  }
+  .characterDisplay > div {
+    width: 300px !important;
+    height: 435px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.8rem;
+  }
+  .backgroundText {
+    font-size: 3.5rem;
+  }
+  .description {
+    font-size: 0.95rem;
+  }
+  .characterDisplay > div {
+    width: 250px !important;
+    height: 360px !important;
+    font-size: 3rem !important;
+  }
+  .backButton, .nextButton {
+    bottom: 1.5rem;
   }
 }

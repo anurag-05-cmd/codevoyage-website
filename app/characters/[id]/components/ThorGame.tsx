@@ -380,14 +380,19 @@ export default function ThorGame({ themeColor = '#a855f7' }: Props) {
         />
 
         {gameState === 'PLAYING' && (
-          <div className={styles.hud}>
-            <div className={styles.scoreBox}>
-              DEMONS ZAPPED: {score} PTS
+          <>
+            <div className={styles.hud}>
+              <div className={styles.scoreBox}>
+                DEMONS ZAPPED: {score} PTS
+              </div>
+              <div className={styles.highScoreBox}>
+                RECORD: {highScore} PTS
+              </div>
             </div>
-            <div className={styles.highScoreBox}>
-              RECORD: {highScore} PTS
+            <div className={styles.mobileHint}>
+              TAP TO ZAP DEMONS
             </div>
-          </div>
+          </>
         )}
 
         <AnimatePresence>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Target, ShieldAlert, Zap, Cpu } from 'lucide-react';
+import { Play, RotateCcw, Target, ShieldAlert, Zap, Cpu, ArrowUp, ArrowDown } from 'lucide-react';
 import styles from './IronManGame.module.css';
 
 interface Props {
@@ -455,6 +455,33 @@ export default function IronManGame({ themeColor = '#f59e0b' }: Props) {
             <div className={styles.highScoreBox}>
               RECORD: {highScore} PTS
             </div>
+          </div>
+        )}
+
+        {gameState === 'PLAYING' && (
+          <div className={styles.mobileControls}>
+            <div className={styles.dPad}>
+              <button 
+                className={styles.controlButton}
+                onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['ArrowUp'] = true; }}
+                onTouchEnd={(e) => { e.preventDefault(); keysPressedRef.current['ArrowUp'] = false; }}
+              >
+                <ArrowUp />
+              </button>
+              <button 
+                className={styles.controlButton}
+                onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['ArrowDown'] = true; }}
+                onTouchEnd={(e) => { e.preventDefault(); keysPressedRef.current['ArrowDown'] = false; }}
+              >
+                <ArrowDown />
+              </button>
+            </div>
+            <button 
+              className={`${styles.controlButton} ${styles.actionButton}`}
+              onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['Space'] = true; setTimeout(() => keysPressedRef.current['Space'] = false, 100); }}
+            >
+              <Target />
+            </button>
           </div>
         )}
 

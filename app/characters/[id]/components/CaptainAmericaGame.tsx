@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Shield, Target, ShieldCheck } from 'lucide-react';
+import { Play, RotateCcw, Shield, Target, ShieldCheck, ArrowLeft, ArrowRight } from 'lucide-react';
 import styles from './CaptainAmericaGame.module.css';
 
 interface Props {
@@ -427,6 +427,33 @@ export default function CaptainAmericaGame({ themeColor = '#3b82f6' }: Props) {
             <div className={styles.highScoreBox}>
               RECORD: {highScore} PTS
             </div>
+          </div>
+        )}
+
+        {gameState === 'PLAYING' && (
+          <div className={styles.mobileControls}>
+            <div className={styles.dPad}>
+              <button 
+                className={styles.controlButton}
+                onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['ArrowLeft'] = true; }}
+                onTouchEnd={(e) => { e.preventDefault(); keysPressedRef.current['ArrowLeft'] = false; }}
+              >
+                <ArrowLeft />
+              </button>
+              <button 
+                className={styles.controlButton}
+                onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['ArrowRight'] = true; }}
+                onTouchEnd={(e) => { e.preventDefault(); keysPressedRef.current['ArrowRight'] = false; }}
+              >
+                <ArrowRight />
+              </button>
+            </div>
+            <button 
+              className={`${styles.controlButton} ${styles.actionButton}`}
+              onTouchStart={(e) => { e.preventDefault(); keysPressedRef.current['Space'] = true; setTimeout(() => keysPressedRef.current['Space'] = false, 100); }}
+            >
+              <Target />
+            </button>
           </div>
         )}
 
